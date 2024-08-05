@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: adservice
 spec:
+  replicas: 1  # Consider adding this to specify the number of replicas
   selector:
     matchLabels:
       app: adservice
@@ -11,7 +12,7 @@ spec:
       labels:
         app: adservice
     spec:
-      serviceAccountName: default
+      serviceAccountName: default  # Change this if you're using a different service account
       terminationGracePeriodSeconds: 5
       securityContext:
         fsGroup: 1000
@@ -20,7 +21,7 @@ spec:
         runAsUser: 1000
       containers:
       - name: server
-        image: gundala22reddy/adservice:22
+        image: gundala22reddy/adservice:22  # Ensure this is the correct image
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -28,7 +29,6 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: adservice
         ports:
         - containerPort: 9555
         env:
