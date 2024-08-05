@@ -20,6 +20,7 @@ spec:
         runAsUser: 1000
       containers:
       - name: server
+        image: gundala22reddy/adservice:22
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
