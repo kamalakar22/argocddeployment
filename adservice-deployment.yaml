@@ -21,7 +21,7 @@ spec:
         runAsUser: 1000
       containers:
       - name: server
-        image: gundala22reddy/adservice:22  # Ensure this is the correct image
+        image: gundala22reddy/registerapp:13  # Ensure this is the correct image
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -57,7 +57,7 @@ kind: Service
 metadata:
   name: adservice
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: adservice
   ports:
